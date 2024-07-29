@@ -9,3 +9,16 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+
+.idea/
+
+.idea/**/gradle.xml
+.idea/**/libraries
+out/
+.idea_modules/
+.idea/$CACHE_FILE$
+*.iml
+
+*.log
+allure-results/
+.allure/

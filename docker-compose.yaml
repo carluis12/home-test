@@ -1,0 +1,80 @@
+version: "3"
+services:
+  chrome:
+    image: selenium/node-chrome
+    platform: linux/amd64
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    deploy:
+      replicas: ${NODE_REPLICAS:-1}
+    networks:
+      - selenium-grid
+
+  edge:
+    image: selenium/node-edge
+    platform: linux/amd64
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    deploy:
+      replicas: ${NODE_REPLICAS:-1}
+    networks:
+      - selenium-grid
+
+  firefox:
+    image: selenium/node-firefox
+    platform: linux/amd64
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    deploy:
+      replicas: ${NODE_REPLICAS:-1}
+    networks:
+      - selenium-grid
+
+  selenium-hub:
+    image: selenium/hub
+    platform: linux/amd64
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+    healthcheck:
+      test: ["CMD", "bash", "-c"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - selenium-grid
+
+  application:
+    image: automaticbytes/demo-app
+    container_name: demo-app
+    platform: linux/amd64
+    ports:
+      - "3100:3100"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3100/health || exit 1"]
+      interval: 10s
+      timeout: 50s
+      retries: 5
+    networks:
+      - selenium-grid
+
+networks:
+  selenium-grid:
+    driver: bridge

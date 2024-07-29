@@ -1,0 +1,103 @@
+[
+  {
+    "testName": "loginSuccessfully",
+    "path": "/login",
+    "login": {
+      "user": "johndoe19",
+      "password": "supersecret"
+    }
+  },
+  {
+    "testName": "loginWrongCredentials",
+    "path": "/login",
+    "login": {
+      "user": "asdf",
+      "password": "qwerty"
+    }
+  },
+  {
+    "testName": "loginEmptyCredentials",
+    "path": "/login",
+    "login": {
+      "user": "",
+      "password": ""
+    }
+  },
+  {
+    "testName": "checkoutFormOrderSuccess",
+    "path": "/checkout",
+    "checkout": {
+      "fullName": "John Doe",
+      "email": "asdf@asdf.com",
+      "address": "123 Main St",
+      "city": "New York",
+      "state": "NY",
+      "zipCode": "10001",
+      "sameBillingAddress": true,
+      "payment": {
+        "nameOnCard": "John Doe",
+        "cardNumber": "123456789",
+        "expMonth": "March",
+        "expYear": "2022",
+        "cvv": "123"
+      }
+    }
+  },
+  {
+    "testName": "checkoutFormAlert",
+    "path": "/checkout",
+    "checkout": {
+      "fullName": "John Doe",
+      "email": "asdf@asdf.com",
+      "address": "123 Main St",
+      "city": "New York",
+      "state": "NY",
+      "zipCode": "10001",
+      "sameBillingAddress": false,
+      "payment": {
+        "nameOnCard": "John Doe",
+        "cardNumber": "123456789",
+        "expMonth": "March",
+        "expYear": "2022",
+        "cvv": "123"
+      }
+    }
+  },
+  {
+    "testName": "cartTotal",
+    "path": "/checkout"
+  },
+  {
+    "testName": "gridItemTest",
+    "path": "/grid",
+    "gridItem": {
+      "position": 7,
+      "name": "Super Pepperoni",
+      "price": "$10"
+    }
+  },
+  {
+    "testName": "gridAllItems",
+    "path": "/grid"
+  },
+  {
+    "testName": "searchSuccess",
+    "path": "/search",
+    "search": {
+      "word": "pizza",
+      "result": "Found one result for pizza"
+    }
+  },
+  {
+    "testName": "searchEmpty",
+    "path": "/search",
+    "search": {
+      "word": "",
+      "result": "Please provide a search word."
+    }
+  }
+]
+
+
+
+

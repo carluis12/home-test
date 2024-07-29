@@ -1,5 +1,10 @@
 #**App Automation Test**
 
+The challenge Documentation is located in the [docs](docs/DOC.md) folder
+Follow these instructions to  configure and run the tests
+
+Author: [Carlos Torres](https://github.com/carluis12)
+
 ## Must have before start
 
 - Git
