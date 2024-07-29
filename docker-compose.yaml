@@ -54,7 +54,7 @@ services:
       - "4443:4443"
       - "4444:4444"
     healthcheck:
-      test: ["CMD", "bash", "-c"]
+      test: [ "CMD", "bash", "-c" ]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -68,7 +68,7 @@ services:
     ports:
       - "3100:3100"
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3100/health || exit 1"]
+      test: [ "CMD-SHELL", "curl -f http://localhost:3100/health || exit 1" ]
       interval: 10s
       timeout: 50s
       retries: 5

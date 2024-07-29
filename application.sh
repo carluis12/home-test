@@ -2,7 +2,7 @@
 
 IMAGE_NAME="automaticbytes/demo-app"
 CONTAINER_NAME="demo-app"
-APP_URL="http://localhost:3100/health"  # Replace with the actual health check endpoint
+APP_URL="http://localhost:3100/health"
 
 if [ "$1" == "start" ]; then
   if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then

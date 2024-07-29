@@ -37,7 +37,7 @@ public class BrowserConfig {
     public void setupSuite() {
         this.env = System.getenv("environment") != null ? System.getenv("environment") : "local";
 
-        if(this.env.equalsIgnoreCase("docker")) {
+        if (this.env.equalsIgnoreCase("docker")) {
             log.info("Docker environment detected, skipping Docker container setup...");
             return;
         }
@@ -56,7 +56,7 @@ public class BrowserConfig {
     @AfterSuite(alwaysRun = true)
     public void tearDownSuite() {
         log.info("Tearing down the suite...");
-        if(this.env.equalsIgnoreCase("docker")) {
+        if (this.env.equalsIgnoreCase("docker")) {
             log.info("Docker environment detected, skipping Docker container teardown...");
             return;
         }
