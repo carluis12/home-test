@@ -8,8 +8,7 @@ if [ "$1" == "start" ]; then
   if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
     echo "Docker container $CONTAINER_NAME is already running."
   else
-    docker run -d --name $CONTAINER_NAME
-    -p 3100:3100 $IMAGE_NAME
+    docker run -d --name $CONTAINER_NAME -p 3100:3100 $IMAGE_NAME
 
     if [ $? -eq 0 ]; then
       echo "Docker container $CONTAINER_NAME started successfully."
